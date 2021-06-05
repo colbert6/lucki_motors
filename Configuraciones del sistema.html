@@ -1,0 +1,40 @@
+Avisos del sistema 
+-------------------------------
+1.No borrar a cliente varios id= 0
+
+Configuraciones del sistema 
+-------------------------------
+
+1. en core/MY_controller.php :
+
+-Se encuentra los datos de la empresa usuaria
+
+2. en config/config.php :
+
+-Se debe actualizar el parametro de ser necesario $config['base_url'] = 'http://localhost/trebloc/';
+
+3. en assets/img :
+-Cambiar la imagen de logo_empresa.jpg según corresponda
+
+4. Habilitar short opentag (php.ini)
+
+5. Limpiar las tablas :
+
+	SET FOREIGN_KEY_CHECKS = 0; 
+	TRUNCATE TABLE detalle_compra;
+	TRUNCATE TABLE compra;
+	TRUNCATE TABLE detalle_movimiento;
+	TRUNCATE TABLE movimiento;
+	TRUNCATE TABLE detalle_ordencompra;
+	TRUNCATE TABLE orden_compra;
+	TRUNCATE TABLE detalle_proforma;
+	TRUNCATE TABLE proforma;
+	TRUNCATE TABLE detalle_venta;
+	TRUNCATE TABLE venta;
+	TRUNCATE TABLE envio_electronico;
+	TRUNCATE TABLE error_envio_electronico;
+	TRUNCATE TABLE kardex;
+	TRUNCATE TABLE stock;
+	SET FOREIGN_KEY_CHECKS = 1;
+
+
