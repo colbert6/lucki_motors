@@ -11,6 +11,11 @@
   .suficiente_stock{
     color: green; 
   }
+
+  .ver_img{
+    cursor: pointer;
+  }
+  
 </style>
 
  <?php 

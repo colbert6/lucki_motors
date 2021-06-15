@@ -69,6 +69,14 @@ function add_detalle(){
 
 }
 
+function permitir_ingreso_precio_compra(input){
+    if($(input).val() == 1){
+        $("#precio_compra").attr("readonly",false);
+    }else{
+        $("#precio_compra").attr("readonly",true);
+    }
+}
+
 function clear_detalle(){
     nro_item = $('#nro_item').val();
     $("#data_detalle").find('input').each(function( index ) {

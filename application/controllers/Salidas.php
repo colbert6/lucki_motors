@@ -33,6 +33,8 @@ class Salidas extends MY_Controller {
         $crud->set_relation('tipo_comprobante_idtipo_comprobante','tipo_comprobante','descripcion');
         $crud->set_relation('motivo_movimiento_idmotivo','motivo_movimiento','descripcion');
         $crud->set_relation('colaborador_registro','colaborador','nombre');
+
+        
         
         // $crud->field_type('fecha_emision', 'datetime');               
         //acciones js revisar groceryCRUD.js
@@ -50,7 +52,7 @@ class Salidas extends MY_Controller {
         $output = $crud->render();
 
         $output->title = "Salida :: <a href='".base_url('salidas/add')."'> crear nueva salida</a>";
-
+       
         $this->_init(true,true,true);//Carga el tema ( $cargar_menu, $cargar_url, $cargar_template )
         $this->load->view('grocery_crud/basic_crud', (array)$output ) ;
         
@@ -205,8 +207,9 @@ class Salidas extends MY_Controller {
         $width_cols = array(  array('Codigo',20 ,'L') ,  
                             array('Producto',30 ,'L') , 
                             array('Area',20, 'R'),
-                            array('Cant.',15, 'R'),
-                            array('Medida',15,'R')
+                            array('Cant.',10, 'R'),
+                            array('P.compra',10, 'R'),
+                            array('Medida',10,'R')
                         );
 
         $pdf->data_table( $det_movimiento ,  $width_cols, true , 'general');

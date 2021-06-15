@@ -22,10 +22,13 @@ class Det_salida extends CI_Model {
             $this->descripcion_producto = empty($_POST['productos'][$i])? 'NONE' : $_POST['productos'][$i];
             $this->producto_idproducto = empty($_POST['idproducto'][$i])? 0 : $_POST['idproducto'][$i];
             $this->descripcion_area = empty($_POST['idarea_nombre'][$i])? 'NONE' : $_POST['idarea_nombre'][$i];
+            $this->precio_compra =  empty($_POST['precio_compra'][$i])? 0 : $_POST['precio_compra'][$i];
             $this->cantidad =  empty($_POST['cantidad_producto'][$i])? 0 : $_POST['cantidad_producto'][$i];
             $this->medida = empty($_POST['unidad_medida'][$i])? 'UND' : $_POST['unidad_medida'][$i];            
             $this->estado = 'Activo';
             $this->db->insert('detalle_salida', $this);
+
+            
         }
 
 
@@ -40,6 +43,7 @@ class Det_salida extends CI_Model {
                         detm.descripcion_producto as producto,
                         descripcion_area as area,
                         cantidad, 
+                        precio_compra,
                         medida
                            ");
         $this->db->from('detalle_salida detm');   

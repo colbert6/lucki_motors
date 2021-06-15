@@ -47,7 +47,7 @@
               <label for="idserie" class="control-label">Motivo</label>
             </div>
             <div class="col-sm-8 col-xs-8">              
-              <select class="form-control" id="idmotivo" name="idmotivo" > 
+              <select class="form-control" id="idmotivo" name="idmotivo" onchange="permitir_ingreso_precio_compra(this)"> 
                   <?php foreach($motivo_movimiento as $mot) {
                     echo "<option value='{$mot->id}' > {$mot->descripcion} </option>";
                   }
@@ -130,6 +130,7 @@
                   <th>#</th>
 
                   <th>PRODUCTO</th>
+                  <th>P.Compra</th>
                   <th>COD</th>
                   <th>UND</th>
                   <th>CANTIDAD</th>

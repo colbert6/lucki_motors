@@ -31,10 +31,12 @@
 <input type="hidden" id="idproducto">
 <input type="hidden" id="idpresentacion">
 
-<div class="col-md-8 col-xs-6 no-padding">
+<div class="col-md-7 col-xs-6 no-padding">
     <input class="form-control " id="productos" type="text" placeholder="BUSCAR PRODUCTO..." autofocus="autofocus"  autocomplete="off">    
 </div>
-
+<div class="col-md-1 col-xs-6  no-padding">
+    <input type="number" class="form-control " id="precio_compra" value="0.00" placeholder="P.compra" autocomplete="off">    
+</div>
 <div class="col-md-1 col-xs-6  no-padding">
     <input type="text" class="form-control " id="codigo" readonly value="" placeholder="CODIGO" autocomplete="off">    
 </div>

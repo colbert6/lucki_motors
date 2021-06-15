@@ -61,13 +61,11 @@ class Stock extends CI_Model {
             $this->db->where('producto_idproducto', $this->input->post('idproducto')[$i]);
             $this->db->update('stock');*/   
             $nuevo_precio = empty($_POST['precio_unitario_producto'][$i])? 0 : $_POST['precio_unitario_producto'][$i];
-            
+            $movimiento_accion = '+';
                 if($movimiento =='+'){
-                    $movimiento = '+';
-                    $this->db->set('und_ingresadas', 'und_ingresadas'.$movimiento.$this->input->post('cantidad_producto')[$i],FALSE);
+                    $this->db->set('und_ingresadas', 'und_ingresadas'.$movimiento_accion.$this->input->post('cantidad_producto')[$i],FALSE);
                 }else{
-                    $movimiento = '+';
-                    $this->db->set('und_salidas', 'und_salidas'.$movimiento.$this->input->post('cantidad_producto')[$i],FALSE);
+                    $this->db->set('und_salidas', 'und_salidas'.$movimiento_accion.$this->input->post('cantidad_producto')[$i],FALSE);
                 }   
                 $this->db->set('precio_unitario', $nuevo_precio);       
 

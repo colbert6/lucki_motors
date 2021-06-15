@@ -63,7 +63,21 @@ class Producto extends CI_Model {
 
                 return $query->result();
         }
-        
+
+
+        public function get_imagen_producto($id)
+        {
+                
+                $this->db->select("pro.nombre, pro.imagen ");
+                $this->db->from('producto as  pro');
+                if($id != ""){
+                    $where ="pro.idproducto = {$id} ";
+                }
+                $this->db->where($where);
+                $query = $this->db->get();
+
+                return $query->row();
+        }
        
 
 

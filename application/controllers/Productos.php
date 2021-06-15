@@ -20,9 +20,8 @@ class Productos extends MY_Controller {
         $crud = new grocery_CRUD();
 
         $crud->set_table('producto');
-        $crud->columns('codproducto', 'nombre','estado');
 
-        /*$crud->display_as('marca_idmarca','Marca');*/
+        
         $crud->display_as('area_idarea','Area');
         $crud->display_as('presentacion_minima','Unidad Medida');
         $crud->unset_fields('codproducto');
@@ -30,20 +29,24 @@ class Productos extends MY_Controller {
 
         $crud->set_subject('Producto');
         $crud->set_relation('presentacion_minima','presentacion','nombre');
-        $crud->set_relation('area_idarea','area','nombre');        
+        $crud->set_relation('area_idarea','area','nombre');     
+
+        $crud->columns('codproducto', 'nombre','presentacion_minima','area_idarea','estado', 'imagen');   
 
         $crud->required_fields('codproducto','nombre','presentacion_minima');//'codbarras','marca_idmarca'
 
         //$crud->required_fields(array('codbarras','nombre'));
         $crud->unique_fields(array('codbarras', 'codproducto' ));
 
+        $crud->set_field_upload('imagen','assets/uploads/productos');
+
         $crud->field_type('precio_venta', 'integer');
         $crud->field_type('precio_unitario', 'integer');
         $crud->field_type('control_stock', 'integer');
 
-        $crud->add_fields('codproducto','nombre','area_idarea','presentacion_minima','precio_venta','precio_unitario','control_stock');
-        $crud->edit_fields('codproducto','nombre','area_idarea','presentacion_minima','precio_venta','precio_unitario','control_stock');
-        $crud->fields('codproducto','nombre','area_idarea','presentacion_minima','precio_venta','precio_unitario','control_stock');
+        $crud->add_fields('codproducto','nombre','area_idarea','presentacion_minima','precio_venta','precio_unitario','control_stock', 'imagen');
+        $crud->edit_fields('codproducto','nombre','area_idarea','presentacion_minima','precio_venta','precio_unitario','control_stock', 'imagen');
+        $crud->fields('codproducto','nombre','area_idarea','presentacion_minima','precio_venta','precio_unitario','control_stock', 'imagen');
 
 
         $crud->order_by('nombre','desc');

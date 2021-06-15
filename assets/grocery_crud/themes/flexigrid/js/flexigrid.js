@@ -78,8 +78,50 @@ $(function(){
 						call_fancybox();
 						add_edit_button_listener();
 						create_export_url(this_form);
-					 }
+					 },
+					 complete: function(){
+					 	$('.imprimir , .guia').on('click', function (e){
+					        e.preventDefault();
+					        href = $(this).attr('href');
+					        window.open(href, '_blank');
+					    })
+
+					    $('.anular').on('click', function (e){
+					    	e.preventDefault();
+					    	href = $(this).attr('href'); 
+
+					        bootbox.confirm({
+					            message: "Seguro de eliminar registro?",
+					            buttons: {
+					                cancel: { label: 'No', className: 'btn-default' },
+					                confirm: { label: 'Yes', className: 'btn-danger' }
+					            },
+					            callback: function (result) {
+					                
+					                if(result){
+					                    $.ajax({
+					                        url: href,
+					                        type: 'GET',
+					                        dataType: 'JSON',
+					                        async: true,
+					                        success: function (result) {
+					                            bootbox.dialog({
+					                                title: 'Solicitud de anulacion',
+					                                message: result.msj
+					                            });
+					                        }
+					                    });
+					                }                
+
+					            }
+					        });
+
+
+					    })
+					}
 				});
+
+				
 			 }
 		});
 

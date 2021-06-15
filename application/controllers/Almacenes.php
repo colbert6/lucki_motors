@@ -10,7 +10,7 @@ class Almacenes extends MY_Controller {
   }
 
   public function stock( $idtienda = 1 )
-  {
+  {   
 
       // CARGANDO MODELO DE ALMACENES
         
@@ -20,6 +20,9 @@ class Almacenes extends MY_Controller {
         
         // ACCEDIENDO A LOS MODELOS           
         $this->load->library('grocery_CRUD');
+        $this->load->js('assets/js/bootbox.min.js');
+        $this->load->js('assets/myjs/groceryCRUD.js');
+
 
         $crud = new grocery_CRUD();
 
@@ -29,7 +32,6 @@ class Almacenes extends MY_Controller {
 
         $crud->order_by('producto','asc');
 
-
         // $crud->unset_operations();
         $crud->unset_add();
         $crud->unset_delete();
@@ -37,6 +39,15 @@ class Almacenes extends MY_Controller {
         $crud->unset_read();
         $output = $crud->render();
 
+        $state = $crud->getState();
+        $state_info = $crud->getStateInfo();
+        if($state == 'ajax_list' )
+        {
+            $this->load->js('assets/myjs/groceryCRUD.js');
+        }elseif($state == 'ajax_list_info')
+        {
+            $this->load->js('assets/myjs/groceryCRUD.js');
+        }
 
         $tiendas = $this->almacen->get_tienda();
 
@@ -57,6 +68,13 @@ class Almacenes extends MY_Controller {
        $this->load->model('almacen');
        $data["data"] = $this->almacen->get_productos_cfilter($tienda,$categoria,$marca);
        $this->load->view('almacenes/tabla.view.php',$data) ;
+    }
+
+    public function ver_imagen_producto()
+    {
+      $this->load->model('producto');  
+      $idproducto = $this->input->get('idproducto');
+      print json_encode($this->producto->get_imagen_producto($idproducto));
     }
 
 
