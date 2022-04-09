@@ -35,8 +35,6 @@ Drop table tipo_pago;
 
 Drop table kardex; 
 
-Drop table unidad_medida; 
-
 Drop table stock; 
 
 
